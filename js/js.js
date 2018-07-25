@@ -100,34 +100,21 @@ $("#arrow_left").click(function(){
 //lightbox
 
 var links = document.querySelectorAll('.lightCustom'),
-// make array
 arrayOfLinks = Array.prototype.slice.call(links);
-// loop 
 Array.prototype.forEach.call(arrayOfLinks,function(obj,index){
-  // open modal on click
   obj.addEventListener('click',function(e){
     e.preventDefault();
-    // if not title show no title
     var title = (obj.title) ? obj.title : 'This not have title';
-    // add class show
     document.querySelector('.lightModal').classList.add('show');
-    // add title in modal with title=""
     document.querySelector('.lightModal-title').innerHTML = title;
-    // get href and add in image modal
     document.querySelector('.lightModal-image').src = obj.href;
-    // add title in alt image
     document.querySelector('.lightModal-image').alt = title;
   });
-  // close modal
   document.querySelector('.lightModal-close').addEventListener('click',function(e){
     e.preventDefault();
-    // remove class="show"
     document.querySelector('.lightModal').classList.remove('show');
-    // remove title
     document.querySelector('.lightModal-title').innerHTML = '';
-    // remove src
     document.querySelector('.lightModal-image').src = '';
-    // remove alt
     document.querySelector('.lightModal-image').alt = '';
   });
 
@@ -151,21 +138,21 @@ $(document).ready(function(){
 
 
 function projectScrollInterval() {
-	scrollYPos = $("body").scrollTop();
+	scrollYPos = $(window).scrollTop();
 	jsProjectElement.each(function() {
       	projectPositionChecker($(this), scrollYPos);
     });
 
 	setTimeout(function(){
 		projectScrollInterval();
-    }, 10);
+    }, 100);
 }
 
 
 
 function projectPositionChecker(e, y) {
 	thisOffset = e.offset().top;
-	if (thisOffset < y + windowHeight/1.3) {
+	if (thisOffset < y + windowHeight/1.2) {
 		dataActiveOn(e);
 	} else {
 		dataActiveOff(e);
@@ -183,7 +170,7 @@ function dataActiveOn(e) {
 
 $(".scroll_logo").click(function(){
 	windowHeight = $(window).height();
-	$("body").animate({
+	$("html,body").animate({
 		scrollTop: windowHeight+1
 	}, 600)
 })

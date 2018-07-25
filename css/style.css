@@ -13,6 +13,8 @@ html, body {
   margin: 0px;
   font-size: 100%;
   position: relative;
+  width: auto;
+  min-width: 860px;
 }
 
 img{
@@ -51,7 +53,6 @@ svg{
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-
 }
 
 .home {
